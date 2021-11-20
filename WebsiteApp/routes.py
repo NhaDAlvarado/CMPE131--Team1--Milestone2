@@ -1,9 +1,11 @@
-import time
+import re
+import pdfkit
 
 from flask import *  # Imports all the functions at once (render_template,flash,etc.)
 from flask_login import current_user, login_required, login_user, logout_user
 from flask_mail import Message
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import generate_password_hash
+from werkzeug.wrappers import response
 
 from WebsiteApp import app_Obj, db, mail
 from WebsiteApp.forms import (LoginForm, RegisterForm, SettingsForm,
@@ -177,3 +179,24 @@ def send_message():
             return "Failed to send Email. Please try again later!"
     else:
         return render_template("email.html")
+
+@app_Obj.route('/share-flashcards', methods=['POST'])
+def share_flashCards():
+    flashcards = FlashCards.query.all()
+    if request.method == "POST":
+        try:
+            email = str(request.form['email'])
+            subject = 'Flash Cards'
+            message = Message(subject, sender="teamonecmpe131@gmail.com", recipients=[email])
+            message.body = render_template("share_flashcards.html",flashcards=flashcards)
+            message.html = render_template("share_flashcards.html",flashcards=flashcards)
+            message.attach = render_template("share_flashcards.html",flashcards=flashcards)
+            mail.send(message) #Sends email
+            flash("Flashcards Email Sent!")
+            return redirect('/')
+            
+        except ConnectionRefusedError as connectionRefusedError_:
+            return "Failed to send Email. Please try again later!"
+    else:
+        return render_template("view_flashcards.html")
+    
