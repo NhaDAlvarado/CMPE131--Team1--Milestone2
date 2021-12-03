@@ -41,13 +41,12 @@ class FlashCards(UserMixin, db.Model):
 
 class Note(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), unique=True)
     note = db.Column(db.String(1024), index=True)
-    share_id = db.Column(db.Integer)
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'Id: {self.id} |{self.note}|'
-
+        return f'Note {self.title} : {self.note}'
 
 @login.user_loader
 def load_user(id):
