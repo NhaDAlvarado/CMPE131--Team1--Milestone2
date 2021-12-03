@@ -1,7 +1,7 @@
 from datetime import datetime
 import time
 import pyttsx3
-import os, markdown, pdfkit
+import markdown, pdfkit
 import pandas as pd
 import networkx as nx
 
@@ -287,6 +287,11 @@ def save_Flashcard(title,description,hint,href):
     except:
         return ''
 
+#view, create, delete notes
+@app_Obj.route('/view_notes')
+def view_notes():
+    return render_template ("dashboard.html")
+
 #Note render
 @app_Obj.route("/render", methods=['GET', 'POST'])
 @login_required
@@ -295,18 +300,23 @@ def notes_render():
     form = noteForm()
     if form.validate_on_submit():
         text = form.file.data.read()
-        newtext = str(text).replace("<p>b'",'').replace("'</p>",'')# Reads Markdown and Displays as string
+        # Reads Markdown and Displays as string
+        newtext = str(text).replace("<p>b'",'').replace("'</p>",'')
         html = newtext[4:-3].split('\\n') #display a file as markdown format
     return render_template("notes_render.html", form=form, html = html)
 
 # Notes Markdown to Pdf
 @app_Obj.route("/mark-to-pdf", methods=['GET', 'POST'])
 @login_required
-def notes_renderer():
+def notes_converttopdf():
     html = ""
     form = noteForm()
     if form.validate_on_submit():
         text = form.file.data.read()
         text = str(text).replace("<p>b'", '').replace("'</p>",'')    # Reads Markdown and Displays as string
-        pdfkit.from_string(text, 'note.pdf')
+        path_wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'
+        config_path = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+        pdfkit.from_string(text, 'note.pdf', configuration=config_path)
+        flash ('Your note is successfully converted to pdf')
     return render_template("notes_marktopdf.html", form=form)
+
