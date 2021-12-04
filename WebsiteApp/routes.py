@@ -19,7 +19,11 @@ from bs4 import BeautifulSoup
 import requests
 
 @app_Obj.route('/')
+def homePage_splash():
+    return render_template('home-with_splashscreen.html')
+
 @app_Obj.route('/home')
+@app_Obj.route('/#')
 def homePage():
     return render_template('home.html')
 

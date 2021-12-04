@@ -1,40 +1,23 @@
-{% extends "base.html" %} {% block content %}
-<div class="note">
+{% extends "base.html" %} 
+{% block content %}
+<div class="note" style="color: black; display: block; text-align: center; ">
   <h2><strong>Note Taking</strong></h2>
   <div class="note-input">
     <h4>Add A New Note</h3>
-    <div class="note-wrapper">
-      <input type="text" id="note-title" placeholder="Title of your note" />
-      <textarea
-        id="note-content"
-        placeholder="Write your note here...."
-        rows="6"
-      ></textarea>
-      <button
-        id="add-note-btn"
-        class="btn btn-primary"
-        type="button"
-        data-toggle="modal"
-        style="margin-top: 5px; margin-left: 25px; margin-bottom: 15px"
-      >
-        <span><i class="fas fa-plus"></i></span>
-        Add Note
-      </button>
+      <div class="note-wrapper">
+        <input type="text" id="note-title" placeholder="Title of your note"/><br><br>
+        <textarea id="note-content" placeholder="Write your note here...." rows="10" cols="50"></textarea> <br>
+        <button id="add-note-btn" class="btn btn-primary" type="button" data-toggle="modal" style="margin-top: 5px; margin-left: 25px; margin-bottom: 15px">
+          <span><i class="fas fa-plus"></i></span>
+          Add Note
+        </button>
+        <button type="button" class="btn btn-danger" id="delete-all-btn" data-toggle="modal" style="margin-top: 5px; margin-left: 25px; margin-bottom: 15px">
+          <span><i class="fas fa-trash"></i></span>
+          Delete All Notes
+        </button>
+      </div>
     </div>
-  </div>
-
-  <div class="note-list"></div>
-
-  <button
-    type="button"
-    class="btn btn-primary"
-    id="delete-all-btn"
-    data-toggle="modal"
-    style="margin-top: 5px; margin-left: 25px; margin-bottom: 15px"
-  >
-    <span><i class="fas fa-trash"></i></span>
-    Delete All
-  </button>
+    <div class="note-list"></div>
 </div>
 
 <script>
@@ -113,12 +96,18 @@
     div.classList.add("note-item");
     div.setAttribute("data-id", noteItem.id);
     div.innerHTML = `
-            <h3>${noteItem.title}</h3>
-            <p>${noteItem.content}</p>
-            <button type = "button" class = "btn delete-note-btn">
-            <span><i class = "fas fa-trash" >
-            Delete
-            </buttton>
+    <div class="col">
+      <div class="card" style="color: black">
+        <div class="card-body" style="background-color: white">
+          <h3 class="card-title">${noteItem.title}</h3>
+          <p class="card-text">${noteItem.content}</p>
+          <button type = "button" class = "btn btn-danger">
+          <span><i class = "fas fa-trash" >
+          Delete
+          </buttton>
+        </div>
+      </div>
+    </div>
       `;
     noteListDiv.appendChild(div);
   }

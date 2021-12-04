@@ -40,6 +40,6 @@ class pomorodoTimerForm (FlaskForm):
     # reset_button = SubmitField('Reset')
 
 class noteForm (FlaskForm):
-    file = FileField('Choose file to upload')
+    file = FileField('Choose file to upload + render')
     submit = SubmitField('Upload')
     
