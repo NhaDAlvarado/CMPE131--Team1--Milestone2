@@ -101,9 +101,7 @@
         <div class="card-body" style="background-color: white">
           <h3 class="card-title">${noteItem.title}</h3>
           <p class="card-text">${noteItem.content}</p>
-          <button type = "button" class = "btn btn-danger">
-          <span><i class = "fas fa-trash" >
-          Delete
+          <button type = "button" class = "btn btn-danger">Delete
           </buttton>
         </div>
       </div>
@@ -129,7 +127,7 @@
 
   // delete a note
   function deleteNote(e) {
-    if (e.target.classList.contains("delete-note-btn")) {
+    if (e.target.classList.contains("btn-danger")) {
       e.target.parentElement.remove();
       let divID = e.target.parentElement.dataset.id;
       let notes = getDataFromStorage();
