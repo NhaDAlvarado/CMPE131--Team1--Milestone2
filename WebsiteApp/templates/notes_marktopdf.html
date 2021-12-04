@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Currently saves to Project Directory</h3>
-<form method="POST" enctype = "multipart/form-data" novalidate>
+<h3 style="text-align: center; color: black; margin-top: 55px;">Currently saves to Project Directory</h3>
+<form method="POST" enctype = "multipart/form-data" novalidate style="text-align: center; color: black;">
 {{ form.csrf_token }}
 <p> {{ form.file.label }} <br>
 {{ form.file(size=32) }}</p>

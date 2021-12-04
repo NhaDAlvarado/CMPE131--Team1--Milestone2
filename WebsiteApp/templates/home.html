@@ -6,89 +6,79 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
-
-<style>
-  .splash{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 200;
-    color: white;
-    text-align: center;
-    background-image: url(../../docFiles/docs/img/png.png);
-}
-h1{
-  margin-top:25%;
-  font-size: 48px;
-}
-.continue{
-  color:#fff;
-  margin-bottom: auto;
-  font-size: 24px;
-}
-</style>
-  <body>
-<div class="splash" id="image">
-  <h1>Welcome to our Project</h1>
-  <a href="#"  onclick="timeout_clear()" class="continue"><span></span>Continue to Page &raquo </a>
-</div>
+<body style="background-color: white;">
     <div class="container-fluid">
-      <h1 style="background-color:green" class="text-center">
+      <h1 style="background-color:green; color: black;" class="text-center">
         Learning Tool - CMPE 131 Project
       </h1>
       <div class="text-center" style="color: black">
-        <img
-          src="/static/cmpe131.png"
-          id="Sample_Image"
-          width="200"
-          height="200"
-        />
         <h1>Features</h1>
       </div>
-      <div style="margin-top: 15px; color: black">
-        <ul class="text-center" style="margin-left: -70px">
+      <div style="margin-top: 15px; color: black" >
+        <ul class="text-center" style="margin-left: -1200px; margin-top: 50px" id='Management'>
           <ol>
             Register/Login Function
+            <img src="/static/cmpe131.png">
           </ol>
           <ol>
-            Delete account
+            Account Management
+            <img src="/static/cmpe131.png">
           </ol>
           <ol>
-            Share Flash Cards
+            Flash Card Management (Create, Edit, Delete)
+            <img src="/static/cmpe131.png">
           </ol>
           <ol>
-            Email Users
+            Notes Management (Create, Delete, Render)
+            <img src="/static/cmpe131.png">
           </ol>
           <ol>
-            To-Do-List
-          </ol>
-          <ol>
-            Timer
-          </ol>
-          <ol>
-            Break Alerts
+            To-Do-List Management (Create, Delete, Update)
+            <img src="/static/cmpe131.png">
           </ol>
           <ol>
             Light + Dark Mode
+            <img src="/static/cmpe131.png">
+          </ol>
+        </ul>    
+        <ul class="text-center" style="margin-top: -500px" id='Time'>
+          <ol>
+            Pomodoro Timer
+            <img src="/static/cmpe131.png">
+          </ol>
+          <ol>
+            Assignment Timer
+            <img src="/static/cmpe131.png">
+          </ol>
+          <ol>
+            Break Alerts
+            <img src="/static/cmpe131.png">
+          </ol><br><br>
+          <br><br>
+        </ul>
+        <ul class="text-center" style="margin-left: 1100px;margin-top: -400px" id='FlashCards_Notes'>
+          <ol>
+            Custom Flashcard Hints
+            <img src="/static/cmpe131.png">
+          </ol>
+          <ol>
+            Email/Share Flashcards
+            <img src="/static/cmpe131.png">
+          </ol>
+          <ol>
+            Custom Flashcard Images
+            <img src="/static/cmpe131.png">
+          </ol>
+          <ol>
+            Notes to PDF
+            <img src="/static/cmpe131.png">
           </ol>
         </ul>
       </div>
     </div>
-   <script>
-      var image = document.getElementById("image");
-        setTimeout(function () {
-          image.style.display = "none";
-        }, 10000);
-        function timeout_clear() {
-          clearTimeout(image);
-         image.style.display = "none";
-        }
-    </script>
     <script>
       setTimeout(function confirmAction() {
         let confirmAction = confirm(
