@@ -12,4 +12,7 @@ nav:
   - Break Alert: breakalert.md
   - Give Hint: givehint.md
   - Light/Dark Mode: lightdarkmode.md
+  - Track time spend on assignment: tracktime.md
+  - Render Notes: notes.md
+  - Convert markdown to pdf: markdowntopdf.md
 theme: readthedocs
