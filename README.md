@@ -26,4 +26,6 @@ Welcome to Learning Tool - CMPE131 Project
 
   - Light/Dark Mode
 
-    
+  - Note Markdown
+  
+  - Convert markdown to pdf
